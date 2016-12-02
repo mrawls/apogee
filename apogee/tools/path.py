@@ -525,7 +525,10 @@ def apVisitPath(loc_id, mjd, fiberid, dr=None):
        TODO: automatically find all apVisit files for a given apogee ID and download them
     """
     mjd = str(mjd).strip()
-    fiberid = str(fiberid).strip()
+    if fiberid >= 100:
+        fiberid = str(fiberid).strip()
+    else:
+        fiberid = '0'+str(fiberid).strip()
     if dr is None:
         dr = _default_dr()
     specReduxPath = apogeeSpectroReduxDirPath(dr=dr)
